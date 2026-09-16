@@ -76,7 +76,7 @@ frontend/                    Minimal UI (upload + discrepancy dashboard)
 1. **Clone and install dependencies**
 
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/NiTeSH9860/ap-guardian.git
    cd ap-guardian
    python -m venv .venv && source .venv/bin/activate
    pip install -r requirements.txt
