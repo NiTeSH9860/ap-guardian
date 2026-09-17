@@ -1,13 +1,23 @@
-fastapi==0.115.0
-uvicorn[standard]==0.30.6
-pydantic==2.9.2
-pydantic-settings==2.5.2
-openai==1.51.0
-python-multipart==0.0.9
-pypdf==5.0.1
-chromadb==0.5.11
-tiktoken==0.8.0
-tavily-python==0.5.0
+# Pinned for Python 3.14.4 compatibility.
+#   - pydantic must be >=2.12 — 3.14 support (dropping the Pydantic v1 shim
+#     that breaks on 3.14) landed in 2.12.
+#   - tiktoken must be >=0.12 — first version shipping 3.14 wheels; earlier
+#     versions force a from-source build that needs a Rust toolchain.
+#   - chromadb has been dropped entirely (see app/services/retrieval.py):
+#     it depended on Pydantic v1's BaseSettings internally, which hard-fails
+#     on import under 3.14 in versions available at build time. Retrieval now
+#     uses a small in-memory numpy index instead — zero extra install risk,
+#     genuinely sufficient for a single-session hackathon demo.
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+pydantic==2.12.5
+pydantic-settings==2.7.1
+openai==1.59.2
+python-multipart==0.0.20
+pypdf==5.1.0
+numpy>=1.26.0
+tiktoken>=0.12.0
+tavily-python==0.5.4
 python-dotenv==1.0.1
-pytest==8.3.3
-httpx==0.27.2
+pytest==8.3.4
+httpx==0.28.1
