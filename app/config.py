@@ -21,9 +21,6 @@ class Settings(BaseSettings):
     # Optional vendor legitimacy check
     tavily_api_key: str = ""
 
-    # Vector store
-    chroma_persist_dir: str = "./data/chroma"
-
     # App
     app_env: str = "development"
     log_level: str = "INFO"
